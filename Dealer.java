@@ -6,6 +6,7 @@ public class Dealer{
 	private int soft;
 
 	public static void main(String[] args){
+		System.out.println("Testing Dealer");
 		Dealer test = new Dealer();
 		System.out.println(test.hand);
 		test.hit();
