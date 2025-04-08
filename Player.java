@@ -6,4 +6,5 @@ interface Player{
 	public void hit();
 	public void stand();
 	public void bust();
+	public void blackjack();
 }//end interface
