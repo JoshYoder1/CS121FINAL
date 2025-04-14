@@ -7,13 +7,16 @@ public class Dealer{
 
 	public static void main(String[] args){
 		System.out.println("Testing Dealer");
-		Dealer test = new Dealer();
-		System.out.println(test.hand);
-		test.hit();
-		System.out.println(test.hand);
+		try{ 
+			Dealer test = new Dealer();
+			System.out.println(test.getHand());
+			test.hit();
+			System.out.println(test.getHand());
+		} catch(Exception e){
+			System.out.println(e.getMessage());
 	}//end main
 
-	Dealer(){
+	public Dealer(){
 		hand = new ArrayList<String>();
 		handAmount = 0;
 		soft = 17;

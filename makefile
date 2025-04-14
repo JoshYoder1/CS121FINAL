@@ -3,8 +3,10 @@ Dealer.class: Dealer.java Player.class
 
 Player.class: Player.java
 	javac Player.java
-testDealer: Dealer.class
 
+testDealer:
+	javac Dealer.java
+	java Dealer.class
 save:
 	git add *
 	git status
