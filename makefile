@@ -6,9 +6,12 @@ Player.class: Player.java
 
 testDealer:
 	javac Dealer.java
-	java Dealer.class
+	java Dealer
 save:
 	git add *
 	git status
 	git commit *
 	git push origin main
+
+clean:
+	rm *.class
