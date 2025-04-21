@@ -69,4 +69,14 @@ public class Program{
 			e.printStackTrace();
 		}//end try
 	}//end loadVenues
+
+	public int menu(int type){
+		int choice;
+		if(type == 1){
+			println("-----Main Menu-----");
+			println("1) Search for venues");
+			println("2) Set search filters");
+			println("3) Create tour");
+		}//end if | main menu
+	}//end menu
 }//end class

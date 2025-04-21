@@ -72,10 +72,11 @@ public class Venue implements Serializable{
 		System.out.println("City: " + City);
 		System.out.println("Phone: " + Phone);
 		System.out.println("Website: " + URL);
-		System.out.print("Capacity: " + Capacity);
-		System.out.print("Genre(s): "
+		System.out.println("Capacity: " + Capacity);
+		System.out.print("Genre: ");
 		for(String i : Style){
-			System.out.print(i + ",");});
+			System.out.print(i + ",");
+		}//end for
 		System.out.println();
 		System.out.print("--------------------");
 		System.out.println();

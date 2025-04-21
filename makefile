@@ -1,10 +1,10 @@
 run: Program.class Venue.class
 	java Program
 
-Program.class: Venue.class
+Program.class: Program.java Venue.class
 	javac Program.java
 
-Venue.class:
+Venue.class: Venue.java
 	javac Venue.java
 
 save:
