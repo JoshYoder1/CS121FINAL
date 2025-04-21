@@ -39,4 +39,28 @@ public class Venue{
 	public void setStyle(style){
 		Style = style;
 	}//end setStyle
+	
+	public String getCity(){
+		return(City);
+	}//end getCity
+
+	public String getName(){
+		return(Name);
+	}//end getName
+
+	public String getPhone(){
+		return(Phone);
+	}//end getPhone
+	
+	public String getURL(){
+		return(URL);
+	}//end getURL
+
+	public String getCapacity(){
+		return(Capacity);
+	}//end getCapacity
+
+	public Arraylist<String> getStyle(){
+		return(Style);
+	}//end getStyle
 }//end class
