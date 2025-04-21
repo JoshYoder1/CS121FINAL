@@ -66,4 +66,18 @@ public class Venue implements Serializable{
 	public ArrayList<String> getStyle(){
 		return(Style);
 	}//end getStyle
+
+	public void printVenue(){
+		System.out.println("---" + Name + "---");
+		System.out.println("City: " + City);
+		System.out.println("Phone: " + Phone);
+		System.out.println("Website: " + URL);
+		System.out.print("Capacity: " + Capacity);
+		System.out.print("Genre(s): "
+		for(String i : Style){
+			System.out.print(i + ",");});
+		System.out.println();
+		System.out.print("--------------------");
+		System.out.println();
+	}//end printVenue
 }//end class

@@ -1,4 +1,4 @@
-run: Program.class
+run: Program.class Venue.class
 	java Program
 
 Program.class: Venue.class

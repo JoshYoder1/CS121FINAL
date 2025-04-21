@@ -12,18 +12,17 @@ public class Program{
 	public Program(){
 		System.out.println("Running Program");
 		readCSV();
-		for(Venue venue : Venues){
-			System.out.println(venue);
-		}//end venue
 		saveVenues();
+		loadVenues();
+		for(Venue venue : Venues){
+			venue.printVenue();
+		}//end venue
 	}//end Program
 
 	public void readCSV(){
-		String filePath = "venues.csv";
-		
+		String filePath = "venues.csv";	
 		try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
 			String line;
-
 			while((line = br.readLine()) != null) {
 				String [] values = line.split(",");
 				if(values.length >= 5){
@@ -58,4 +57,16 @@ public class Program{
 		}//end try
 	}//end saveVenues
 
+	public void loadVenues(){
+		try{
+			FileInputStream fIn= new FileInputStream("venues.dat");
+			ObjectInputStream obIn = new ObjectInputStream(fIn);
+			Venues = (ArrayList<Venue>)obIn.readObject();
+			obIn.close();
+			fIn.close();
+		} catch(Exception e){
+			System.out.println("Load Unsuccessful");
+			e.printStackTrace();
+		}//end try
+	}//end loadVenues
 }//end class
