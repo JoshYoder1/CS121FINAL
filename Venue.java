@@ -5,7 +5,7 @@ public class Venue{
 	private String Phone;
 	private String URL;
 	private String Capacity;
-	private Arraylist<String> Style;
+	private ArrayList<String> Style = new ArrayList<String>();
 
 	public Venue(){
 		City = null;
@@ -13,31 +13,30 @@ public class Venue{
 		Phone = null;
 		URL = null;
 		Capacity = null;
-		Style = new Arraylist<String>();
 	}//end constuctor
 
 	public void setCity(String city){
 		City = city;
 	}//end setCity
 
-	public void setName(name){
+	public void setName(String name){
 		Name = name;
 	}//end setName
 
-	public void setPhone(phone){
+	public void setPhone(String phone){
 		Phone = phone;
 	}//end setPhone
 
-	public void setURL(url){
+	public void setURL(String url){
 		URL = url;
 	}//end setURL
 
-	public void setCapacity(capacity){
+	public void setCapacity(String capacity){
 		Capacity = capacity;
 	}//end csetCapacity
 
-	public void setStyle(style){
-		Style = style;
+	public void setStyle(String style){
+		Style.add(style);
 	}//end setStyle
 	
 	public String getCity(){
@@ -60,7 +59,7 @@ public class Venue{
 		return(Capacity);
 	}//end getCapacity
 
-	public Arraylist<String> getStyle(){
+	public ArrayList<String> getStyle(){
 		return(Style);
 	}//end getStyle
 }//end class
