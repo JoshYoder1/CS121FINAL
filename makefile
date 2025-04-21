@@ -1,12 +1,12 @@
-Dealer.class: Dealer.java Player.class
-	javac Dealer.java
+run: Program.class
+	java Program
 
-Player.class: Player.java
-	javac Player.java
+Program.class: Venue.class
+	javac Program.java
 
-testDealer:
-	javac Dealer.java
-	java Dealer
+Venue.class:
+	javac Venue.java
+
 save:
 	git add *
 	git status

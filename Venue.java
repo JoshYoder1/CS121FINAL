@@ -1,5 +1,9 @@
 //Venue.java
-public class Venue{
+
+import java.util.*;
+import java.io.Serializable;
+
+public class Venue implements Serializable{
 	private String City;
 	private String Name;
 	private String Phone;

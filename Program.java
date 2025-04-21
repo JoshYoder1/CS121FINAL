@@ -6,18 +6,22 @@ public class Program{
 	private ArrayList<Venue> Venues = new ArrayList();
 
 	public static void main(String[] args){
-		Program x = Program();
+		Program x = new Program();
 	}//end main
 	
 	public Program(){
 		System.out.println("Running Program");
 		readCSV();
+		for(Venue venue : Venues){
+			System.out.println(venue);
+		}//end venue
+		saveVenues();
 	}//end Program
 
 	public void readCSV(){
 		String filePath = "venues.csv";
 		
-		try(BufferedReader br = new BufferedReader(new FileReader(filepath))){
+		try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
 			String line;
 
 			while((line = br.readLine()) != null) {
@@ -33,11 +37,25 @@ public class Program{
 					for(int i = 5; i < values.length; i++){
 						x.setStyle(values[i]);
 					}//end for
+					Venues.add(x);
 				}//end if
-			Venues.add(x);
 			}//end while
 		} catch (IOException e){
 			e.printStackTrace();
 		}//end try
 	}//end readCSV	
+
+	public void saveVenues(){
+		try{
+			FileOutputStream fo = new FileOutputStream("venues.dat");
+			ObjectOutputStream obOut = new ObjectOutputStream(fo);
+			obOut.writeObject(Venues);
+			obOut.close();
+			fo.close();
+		}catch(Exception e){
+			System.out.println("Save Unsuccessful");
+			e.printStackTrace();
+		}//end try
+	}//end saveVenues
+
 }//end class
