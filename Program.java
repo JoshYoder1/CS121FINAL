@@ -4,9 +4,11 @@ import java.io.*;
 
 public class Program{
 	private ArrayList<Venue> Venues = new ArrayList();
+	private Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args){
 		Program x = new Program();
+
 	}//end main
 	
 	public Program(){
@@ -14,9 +16,11 @@ public class Program{
 		readCSV();
 		saveVenues();
 		loadVenues();
-		for(Venue venue : Venues){
+		/*for(Venue venue : Venues){
 			venue.printVenue();
-		}//end venue
+		}//end for
+		*/
+		start();
 	}//end Program
 
 	public void readCSV(){
@@ -70,13 +74,43 @@ public class Program{
 		}//end try
 	}//end loadVenues
 
-	public int menu(int type){
-		int choice;
+	public void menu(int type){
 		if(type == 1){
-			println("-----Main Menu-----");
-			println("1) Search for venues");
-			println("2) Set search filters");
-			println("3) Create tour");
+			System.out.println("-----Main Menu-----");
+			System.out.println("1) Search for venues");
+			System.out.println("2) Set search filters");
+			System.out.println("3) View tours");
+			System.out.println("4) Info");
+			System.out.println("0) Exit");
 		}//end if | main menu
 	}//end menu
+
+	public void start(){
+		
+		boolean keepGoing = true;
+		while(keepGoing){
+			menu(1);
+			System.out.print(">>>");
+			String choice = input.nextLine();
+
+			if(choice.valueOf('1')){
+
+			}//end if
+			else if(choice == 2){
+
+			}//end elif
+			else if(choice == 3){
+
+			}//end elif
+			else if(choice == 4){
+
+			}//end elif
+			else if(choice == 0){
+				keepGoing = false;
+			}//end elif
+			else{
+				System.out.println("!!!INVALID OPTION!!!");	
+			}//end else
+		}//end while
+	}//end start
 }//end class
