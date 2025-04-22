@@ -261,7 +261,7 @@ public class Program{
 							else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMax)){
 								Filtered.remove(counter);
 							}//end if
-							else{}
+							else{};
 							counter = counter + 1;
 						}//end for
 					}//end else
