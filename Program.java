@@ -250,8 +250,8 @@ public class Program{
 						}//end for
 					}//end if
 					else{
+						int counter = 0;
 						for(Venue venue : Filtered){
-							int counter = 0;
 							String B = venue.getCity();
 							char C = B.charAt(i);
 							if(A == C){
