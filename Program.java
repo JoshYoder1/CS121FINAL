@@ -335,7 +335,6 @@ public class Program{
 	}//end search
 
 	public void openTour(){
-		int counter = 0;
 		Iterator<Venue> iterator = tour.iterator();
 		while(iterator.hasNext()){
 			Venue venue = iterator.next();
@@ -344,16 +343,18 @@ public class Program{
 			menu(8);
 			System.out.print(">>");
 			String choice = input.nextLine();
-			if(choice.equals("1")){}//end if
+			if(choice.equals("1")){
+				// Move to next
+			}
 			else if(choice.equals("2")){
-				tour.remove(counter);
-			}//end elif
+				iterator.remove(); // ✅ safe removal
+			}
 			else if(choice.equals("0")){
-				break;
-			}//end elif
+				break; // Exit tour management
+			}
 			else{
 				System.out.println("!!!INVALID OPTION!!!");
-			}//end else
-		}//end for
-	}//end openTour
+			}
+		}
+	}
 }//end class
