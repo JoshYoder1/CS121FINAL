@@ -233,6 +233,7 @@ public class Program{
 			else if(choice.equals("0")){
 				System.out.println("Applying Filters...");
 				Filtered.clear();
+				if(cityF != null){
 				for(int i = 0; i < cityF.length(); i++){
 					char A = cityF.charAt(i); 
 					if(Filtered.size() == 0){
@@ -240,13 +241,34 @@ public class Program{
 							String B = venue.getCity();
 						       	char C = B.charAt(i);
 							if(A == C){
-								System.out.println("Y");
+								Filtered.add(venue);
+								System.out.print("A");
 							}//end if
 							else{
-								System.out.println("N");
+								System.out.print("1");
 							}//end else
 						}//end for
 					}//end if
+					else{
+						for(Venue venue : Filtered){
+							int counter = 0;
+							String B = venue.getCity();
+							char C = B.charAt(i);
+							if(A == C){
+								System.out.print("B");
+								//Filtered.add(venue);
+							}//end if
+							else{
+								System.out.print("2");
+								Filtered.remove(counter);
+							}//end else
+							counter = counter + 1;
+						}//end for
+					}//end else
+				}//end for
+				}//end if
+				for(Venue venue : Filtered){
+					System.out.println(venue);
 				}//end for
 				keepGoing = false;
 			}//end elif
