@@ -104,7 +104,7 @@ public class Program{
 		}//end elif | Filters
 		else if(type == 4){
 			System.out.println("-----City Filters-----");
-			System.out.println("Enter first 1 to 3 letters of city.");
+			System.out.println("Enter first 1 to 3 letters of city. Ex. Mun");
 			System.out.println("Enter 4+ letters to remove filter.");
 		}//end elif | City FIlter
 		else if(type == 5){
@@ -112,6 +112,10 @@ public class Program{
 			System.out.println("Enter Max Capacity then Enter Minimum Capacity.");
 			System.out.println("Enter letters to remove filter.");
 		}//end elif | Capacity Filter
+		else if(type == 6){
+			System.out.println("-----Genre Filters-----");
+			System.out.println("Enter any single genre. Ex. HipHop");
+			System.out.println("Enter 0 to remove filter");
 	}//end menu
 
 	public void start(){
@@ -160,8 +164,10 @@ public class Program{
 						cityF = choice;
 					}//end if
 					else{
+						System.out.println("!!Removing City Filter!!");
 						cityF = null;
 					}//end else
+					keepCity = false;
 				}//end while
 			}//end if
 			else if(choice.equals("2")){
@@ -174,6 +180,10 @@ public class Program{
 						if(Integer.valueOf(choice) > -99999){
 							capacityMax = choice;
 						}//end if
+						else{
+							System.out.println("!!!INVALID OPTION!!!");
+							System.out.println("!!Removing Max Filter!!");
+							capacityMax = null;
 					} catch(Exception e){
 						System.out.println("!!Removing Max Filter!!");
 						capacityMax = null;
@@ -184,14 +194,39 @@ public class Program{
 						if(Integer.valueOf(choice) > -99999){
 							capacityMin = choice;
 						}//end if
+						else{
+							System.out.println("!!!INVALID OPTION!!!");
+							System.out.println("!!Removing Min Filter!!");
+							capacityMin = null;
 					} catch(Exception e){
 						System.out.println("!!Removing Min Filter!!");
+						capacityMin = null;
 					}//end try
 					keepCapa = false;
 				}//end while
 			}//end elif
-			else if(choice.equals("3")){}
-			else if(choice.equals("4")){}
+			else if(choice.equals("3")){
+				menu(6);
+				System.out.print(">>>");
+				choice = input.nextLine();
+				if(choice.equals("0"){
+					System.out.println("!!Removing Genre Filter!!");
+					genreF = null;
+				}//end if
+				else{
+					genreF = choice;
+				}//end else
+			}//end elif
+			else if(choice.equals("4")){
+				System.out.println("-----Filters-----");
+				System.out.println("City: " + cityF);
+				System.out.println("Max Capacity: " + capacityMax);
+				System.out.println("Min Capacity: " + capacityMin);
+				System.out.println("Genre: " + genreF);
+				System.out.println("--------------------");
+				System.out.print("ENTER TO CONTINUE");
+				x = input.nextLine();
+			}//end elif
 			else if(choice.equals("0")){
 				keepGoing = false;
 			}//end elif
