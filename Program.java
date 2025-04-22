@@ -255,12 +255,12 @@ public class Program{
 						}//end for
 					}//end if
 					else{
-						int counter = 0;
+						int counter = 1;
 						for(Venue venue : Filtered){
 							if(venue.getCapacity().equals("N/A")){}
-							else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMax)){
-								Filtered.remove(counter);
-							}//end if
+								else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMax)){
+									Filtered.remove(counter);
+								}//end if
 							else{}
 							counter = counter + 1;
 						}//end for
@@ -277,20 +277,20 @@ public class Program{
 						}//end for
 					}//end if
 					else{
-						int counter = 0;
+						int counter = 1;
 						for(Venue venue : Filtered){
 							if(venue.getCapacity().equals("N/A")){}
-							else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMin)){
-								Filtered.remove(counter);
-							}//end elif
+								else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMin)){
+									Filtered.remove(counter);
+								}//end elif
 							else{}
 							counter = counter + 1;
 						}//end for
 					}//end else
+				}//end if
 				for(Venue venue : Filtered){
 					System.out.println(venue.getCapacity());
 				}//end for
-				}//end if
 			}//end elif
 			else{
 				System.out.println("!!!INVALID OPTION!!!");
