@@ -4,6 +4,7 @@ import java.io.*;
 
 public class Program{
 	private ArrayList<Venue> Venues = new ArrayList();
+	private ArrayList<Venue> Filtered = new ArrayList();
 	private Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args){
@@ -83,6 +84,12 @@ public class Program{
 			System.out.println("4) Info");
 			System.out.println("0) Exit");
 		}//end if | main menu
+		else if(type == 2){
+			System.out.println("--------------------");
+			System.out.println("1) Next");
+			System.out.println("2) Add to tour");
+			System.out.println("0) Exit");
+		}//end elif
 	}//end menu
 
 	public void start(){
@@ -90,22 +97,23 @@ public class Program{
 		boolean keepGoing = true;
 		while(keepGoing){
 			menu(1);
-			System.out.print(">>>");
+			System.out.print(">");
 			String choice = input.nextLine();
 
-			if(choice.valueOf('1')){
-
+			if(choice.equals("1")){
+				search();
 			}//end if
-			else if(choice == 2){
+			else if(choice.equals("2")){
 
 			}//end elif
-			else if(choice == 3){
+			else if(choice.equals("3")){
 
 			}//end elif
-			else if(choice == 4){
-
+			else if(choice.equals("4")){
+				System.out.println("-----Info-----");
+				System.out.println("Venues are located in Indiana and surrounding big cities.");
 			}//end elif
-			else if(choice == 0){
+			else if(choice.equals("0")){
 				keepGoing = false;
 			}//end elif
 			else{
@@ -113,4 +121,29 @@ public class Program{
 			}//end else
 		}//end while
 	}//end start
+
+	public void setFilter(){};
+
+
+	public void search(){
+		boolean keepGoing = true;
+		if(Filtered.size() == 0){
+			for(Venue venue : Venues){
+				venue.printVenue();
+				menu(2);
+				System.out.print(">>");
+				String choice = input.nextLine();
+				if(choice.equals("1")){}//end if
+				else if(choice.equals("2")){
+					
+				}//end elif
+				else if(choice.equals("0")){
+					break;
+				}//end elif
+				else{
+					System.out.println("!!!INVALID OPTION!!!");
+				}//end else
+			}//end for
+		}//end if	
+	}//end search
 }//end class
