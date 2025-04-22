@@ -10,6 +10,7 @@ public class Program{
 	private String capacityMax;
 	private String capacityMin;
 	private String genreF;
+	private ArrayList<Venue> tour = new ArrayList();
 
 	public static void main(String[] args){
 		Program x = new Program();
@@ -116,6 +117,15 @@ public class Program{
 			System.out.println("-----Genre Filters-----");
 			System.out.println("Enter any single genre. Ex. HipHop");
 			System.out.println("Enter 0 to remove filter");
+		}//end elif | Genre Filter
+		else if(type == 7){
+			System.out.println("-----Manage Tour-----");
+		}//end elif | Manage Tour
+		else if(type == 8){
+			System.out.println("--------------------");
+			System.out.println("1) Next");
+			System.out.println("2) Remove");
+			System.out.println("0) Exit");
 		}//end elif
 	}//end menu
 
@@ -134,7 +144,7 @@ public class Program{
 				setFilter();
 			}//end elif
 			else if(choice.equals("3")){
-
+				openTour();
 			}//end elif
 			else if(choice.equals("4")){
 				System.out.println("-----Info-----");
@@ -266,6 +276,9 @@ public class Program{
 					ArrayList<Venue> filteredByGenre = new ArrayList<Venue>();
 					for(Venue venue : (Filtered.size() > 0 ? Filtered : Venues)){
 						for(String style : venue.getStyle()){
+							if(style.equalsIgnoreCase("Any")){
+								filteredByGenre.add(venue);
+							}//end if
 							if(style.equalsIgnoreCase(genreF)){
 								filteredByGenre.add(venue);
 								break;
@@ -280,7 +293,7 @@ public class Program{
 			}//end else
 		}//end while
 	}//end setFilter
-
+	
 	public void search(){
 		boolean keepGoing = true;
 		if(Filtered.size() == 0){
@@ -291,7 +304,7 @@ public class Program{
 				String choice = input.nextLine();
 				if(choice.equals("1")){}//end if
 				else if(choice.equals("2")){
-					
+					tour.add(venue);
 				}//end elif
 				else if(choice.equals("0")){
 					break;
@@ -308,7 +321,9 @@ public class Program{
 				System.out.print(">>");
 				String choice = input.nextLine();
 				if(choice.equals("1")){}//end if
-				else if(choice.equals("2")){}//end elif
+				else if(choice.equals("2")){
+					tour.add(venue);
+				}//end elif
 				else if(choice.equals("0")){
 					break;
 				}//end elif
@@ -318,4 +333,27 @@ public class Program{
 			}//end for
 		}//end else
 	}//end search
+
+	public void openTour(){
+		int counter = 0;
+		Iterator<Venue> iterator = tour.iterator();
+		while(iterator.hasNext()){
+			Venue venue = iterator.next();
+			menu(7);
+			venue.printVenue();
+			menu(8);
+			System.out.print(">>");
+			String choice = input.nextLine();
+			if(choice.equals("1")){}//end if
+			else if(choice.equals("2")){
+				tour.remove(counter);
+			}//end elif
+			else if(choice.equals("0")){
+				break;
+			}//end elif
+			else{
+				System.out.println("!!!INVALID OPTION!!!");
+			}//end else
+		}//end for
+	}//end openTour
 }//end class
