@@ -240,57 +240,40 @@ public class Program{
 						}//end if
 					}//end for
 				}//end if
-				for(Venue venue : Filtered){
-					System.out.println(venue.getCity());
+				//for(Venue venue : Filtered){
+				//	System.out.println(venue.getCity());
+				//end for
+				ArrayList<Venue> filteredByCapacity = new ArrayList<>();
+
+				for (Venue venue : (Filtered.size() > 0 ? Filtered : Venues)) {
+					try {
+						if (!venue.getCapacity().equalsIgnoreCase("N/A")) {
+							int cap = Integer.parseInt(venue.getCapacity());
+							boolean withinMax = (capacityMax == null || cap <= Integer.parseInt(capacityMax));
+							boolean withinMin = (capacityMin == null || cap >= Integer.parseInt(capacityMin));
+
+							if (withinMax && withinMin) {
+								filteredByCapacity.add(venue);
+							}// end if
+						}//end if
+					} catch (NumberFormatException e) {
+						// Skip venue if capacity is not a valid number
+					}//end try
 				}//end for
+				Filtered = filteredByCapacity;
 				keepGoing = false;
-				if(capacityMax != null){
-					if(Filtered.size() == 0){
-						for(Venue venue : Venues){
-							if(venue.getCapacity().equals("N/A")){}
-							else if(Integer.valueOf(venue.getCapacity()) < Integer.valueOf(capacityMax)){
-								Filtered.add(venue);
-							}//end elif
-							else{}
+				if(genreF != null){
+					ArrayList<Venue> filteredByGenre = new ArrayList<Venue>();
+					for(Venue venue : (Filtered.size() > 0 ? Filtered : Venues)){
+						for(String style : venue.getStyle()){
+							if(style.equalsIgnoreCase(genreF)){
+								filteredByGenre.add(venue);
+								break;
+							}//end if
 						}//end for
-					}//end if
-					else{
-						int counter = 1;
-						for(Venue venue : Filtered){
-							if(venue.getCapacity().equals("N/A")){}
-								else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMax)){
-									Filtered.remove(counter);
-								}//end if
-							else{}
-							counter = counter + 1;
-						}//end for
-					}//end else
+					}//end for
+					Filtered = filteredByGenre;
 				}//end if
-				if(capacityMin != null){
-					if(Filtered.size() == 0){
-						for(Venue venue : Venues){
-							if(venue.getCapacity().equals("N/A")){}
-							else if(Integer.valueOf(venue.getCapacity()) < Integer.valueOf(capacityMin)){
-								Filtered.add(venue);
-							}//end elif
-							else{}
-						}//end for
-					}//end if
-					else{
-						int counter = 1;
-						for(Venue venue : Filtered){
-							if(venue.getCapacity().equals("N/A")){}
-								else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMin)){
-									Filtered.remove(counter);
-								}//end elif
-							else{}
-							counter = counter + 1;
-						}//end for
-					}//end else
-				}//end if
-				for(Venue venue : Filtered){
-					System.out.println(venue.getCapacity());
-				}//end for
 			}//end elif
 			else{
 				System.out.println("!!!INVALID OPTION!!!");
@@ -317,6 +300,22 @@ public class Program{
 					System.out.println("!!!INVALID OPTION!!!");
 				}//end else
 			}//end for
-		}//end if	
+		}//end if
+		else{
+			for(Venue venue : Filtered){
+				venue.printVenue();
+				menu(2);
+				System.out.print(">>");
+				String choice = input.nextLine();
+				if(choice.equals("1")){}//end if
+				else if(choice.equals("2")){}//end elif
+				else if(choice.equals("0")){
+					break;
+				}//end elif
+				else{
+					System.out.println("!!!INVALID OPTION!!!");
+				}//end else
+			}//end for
+		}//end else
 	}//end search
 }//end class
