@@ -234,43 +234,63 @@ public class Program{
 				System.out.println("Applying Filters...");
 				Filtered.clear();
 				if(cityF != null){
-				for(int i = 0; i < cityF.length(); i++){
-					char A = cityF.charAt(i); 
+					for(Venue venue : Venues){
+						if(venue.getCity().toLowerCase().startsWith(cityF.toLowerCase())){
+							Filtered.add(venue);
+						}//end if
+					}//end for
+				}//end if
+				for(Venue venue : Filtered){
+					System.out.println(venue.getCity());
+				}//end for
+				keepGoing = false;
+				if(capacityMax != null){
 					if(Filtered.size() == 0){
 						for(Venue venue : Venues){
-							String B = venue.getCity();
-						       	char C = B.charAt(i);
-							if(A == C){
+							if(venue.getCapacity().equals("N/A")){}
+							else if(Integer.valueOf(venue.getCapacity()) < Integer.valueOf(capacityMax)){
 								Filtered.add(venue);
-								System.out.print("A");
-							}//end if
-							else{
-								System.out.print("1");
-							}//end else
+							}//end elif
+							else{}
 						}//end for
 					}//end if
 					else{
 						int counter = 0;
 						for(Venue venue : Filtered){
-							String B = venue.getCity();
-							char C = B.charAt(i);
-							if(A == C){
-								System.out.print("B");
-								//Filtered.add(venue);
-							}//end if
-							else{
-								System.out.print("2");
+							if(venue.getCapacity().equals("N/A")){}
+							else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMax)){
 								Filtered.remove(counter);
-							}//end else
+							}//end if
+							else{}
 							counter = counter + 1;
 						}//end for
 					}//end else
+				}//end if
+				if(capacityMin != null){
+					if(Filtered.size() == 0){
+						for(Venue venue : Venues){
+							if(venue.getCapacity().equals("N/A")){}
+							else if(Integer.valueOf(venue.getCapacity()) < Integer.valueOf(capacityMin)){
+								Filtered.add(venue);
+							}//end elif
+							else{}
+						}//end for
+					}//end if
+					else{
+						int counter = 0;
+						for(Venue venue : Filtered){
+							if(venue.getCapacity().equals("N/A")){}
+							else if(Integer.valueOf(venue.getCapacity()) > Integer.valueOf(capacityMin)){
+								Filtered.remove(counter);
+							}//end elif
+							else{}
+							counter = counter + 1;
+						}//end for
+					}//end else
+				for(Venue venue : Filtered){
+					System.out.println(venue.getCapacity());
 				}//end for
 				}//end if
-				for(Venue venue : Filtered){
-					System.out.println(venue);
-				}//end for
-				keepGoing = false;
 			}//end elif
 			else{
 				System.out.println("!!!INVALID OPTION!!!");
