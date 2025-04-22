@@ -116,6 +116,7 @@ public class Program{
 			System.out.println("-----Genre Filters-----");
 			System.out.println("Enter any single genre. Ex. HipHop");
 			System.out.println("Enter 0 to remove filter");
+		}//end elif
 	}//end menu
 
 	public void start(){
@@ -184,6 +185,7 @@ public class Program{
 							System.out.println("!!!INVALID OPTION!!!");
 							System.out.println("!!Removing Max Filter!!");
 							capacityMax = null;
+						}//end else
 					} catch(Exception e){
 						System.out.println("!!Removing Max Filter!!");
 						capacityMax = null;
@@ -198,6 +200,7 @@ public class Program{
 							System.out.println("!!!INVALID OPTION!!!");
 							System.out.println("!!Removing Min Filter!!");
 							capacityMin = null;
+						}//end else
 					} catch(Exception e){
 						System.out.println("!!Removing Min Filter!!");
 						capacityMin = null;
@@ -209,7 +212,7 @@ public class Program{
 				menu(6);
 				System.out.print(">>>");
 				choice = input.nextLine();
-				if(choice.equals("0"){
+				if(choice.equals("0")){
 					System.out.println("!!Removing Genre Filter!!");
 					genreF = null;
 				}//end if
@@ -225,9 +228,26 @@ public class Program{
 				System.out.println("Genre: " + genreF);
 				System.out.println("--------------------");
 				System.out.print("ENTER TO CONTINUE");
-				x = input.nextLine();
+				String x = input.nextLine();
 			}//end elif
 			else if(choice.equals("0")){
+				System.out.println("Applying Filters...");
+				Filtered.clear();
+				for(int i = 0; i < cityF.length(); i++){
+					char A = cityF.charAt(i); 
+					if(Filtered.size() == 0){
+						for(Venue venue : Venues){
+							String B = venue.getCity();
+						       	char C = B.charAt(i);
+							if(A == C){
+								System.out.println("Y");
+							}//end if
+							else{
+								System.out.println("N");
+							}//end else
+						}//end for
+					}//end if
+				}//end for
 				keepGoing = false;
 			}//end elif
 			else{
