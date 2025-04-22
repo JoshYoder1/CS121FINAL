@@ -6,6 +6,10 @@ public class Program{
 	private ArrayList<Venue> Venues = new ArrayList();
 	private ArrayList<Venue> Filtered = new ArrayList();
 	private Scanner input = new Scanner(System.in);
+	private String cityF;
+	private String capacityMax;
+	private String capacityMin;
+	private String genreF;
 
 	public static void main(String[] args){
 		Program x = new Program();
@@ -85,11 +89,29 @@ public class Program{
 			System.out.println("0) Exit");
 		}//end if | main menu
 		else if(type == 2){
-			System.out.println("--------------------");
+			System.out.println("-----Options-----");
 			System.out.println("1) Next");
 			System.out.println("2) Add to tour");
 			System.out.println("0) Exit");
-		}//end elif
+		}//end elif | Search
+		else if(type == 3){
+			System.out.println("-----Filters-----");
+			System.out.println("1) City");
+			System.out.println("2) Capacity");
+			System.out.println("3) Genre");
+			System.out.println("4) See current filter");
+			System.out.println("0) Exit");
+		}//end elif | Filters
+		else if(type == 4){
+			System.out.println("-----City Filters-----");
+			System.out.println("Enter first 1 to 3 letters of city.");
+			System.out.println("Enter 4+ letters to remove filter.");
+		}//end elif | City FIlter
+		else if(type == 5){
+			System.out.println("-----Capacity Filters-----");
+			System.out.println("Enter Max Capacity then Enter Minimum Capacity.");
+			System.out.println("Enter letters to remove filter.");
+		}//end elif | Capacity Filter
 	}//end menu
 
 	public void start(){
@@ -104,7 +126,7 @@ public class Program{
 				search();
 			}//end if
 			else if(choice.equals("2")){
-
+				setFilter();
 			}//end elif
 			else if(choice.equals("3")){
 
@@ -122,8 +144,62 @@ public class Program{
 		}//end while
 	}//end start
 
-	public void setFilter(){};
-
+	public void setFilter(){
+		boolean keepGoing = true;
+		while(keepGoing){
+			menu(3);
+			System.out.print(">>");
+			String choice = input.nextLine();
+			if(choice.equals("1")){
+				boolean keepCity = true;
+				while(keepCity){
+					menu(4);
+					System.out.print(">>>");
+					choice = input.nextLine();
+					if(choice.length() <= 3){
+						cityF = choice;
+					}//end if
+					else{
+						cityF = null;
+					}//end else
+				}//end while
+			}//end if
+			else if(choice.equals("2")){
+				boolean keepCapa = true;
+				while(keepCapa){
+					menu(5);
+					System.out.print("Max>>>");
+					choice = input.nextLine();
+					try{
+						if(Integer.valueOf(choice) > -99999){
+							capacityMax = choice;
+						}//end if
+					} catch(Exception e){
+						System.out.println("!!Removing Max Filter!!");
+						capacityMax = null;
+					}//end try
+					System.out.print("Min>>>");
+					choice = input.nextLine();
+					try{
+						if(Integer.valueOf(choice) > -99999){
+							capacityMin = choice;
+						}//end if
+					} catch(Exception e){
+						System.out.println("!!Removing Min Filter!!");
+					}//end try
+					keepCapa = false;
+				}//end while
+			}//end elif
+			else if(choice.equals("3")){}
+			else if(choice.equals("4")){}
+			else if(choice.equals("0")){
+				keepGoing = false;
+			}//end elif
+			else{
+				System.out.println("!!!INVALID OPTION!!!");
+			}//end else
+		}//end while
+	}//end setFilter
 
 	public void search(){
 		boolean keepGoing = true;
