@@ -1,3 +1,3 @@
 # CS121FINAL
-## Description
-A tool to help plan musical tours/events
+## Use-Case
+A tool to help plan musical tours/events for Artists and Bands in the Indiana area.
