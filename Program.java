@@ -343,18 +343,16 @@ public class Program{
 			menu(8);
 			System.out.print(">>");
 			String choice = input.nextLine();
-			if(choice.equals("1")){
-				// Move to next
-			}
+			if(choice.equals("1")){}//end if
 			else if(choice.equals("2")){
-				iterator.remove(); // ✅ safe removal
-			}
+				iterator.remove();
+			}//end elif
 			else if(choice.equals("0")){
-				break; // Exit tour management
-			}
+				break;
+			}//end elif
 			else{
 				System.out.println("!!!INVALID OPTION!!!");
-			}
-		}
-	}
+			}//end else
+		}//end while
+	}//end openTour
 }//end class
